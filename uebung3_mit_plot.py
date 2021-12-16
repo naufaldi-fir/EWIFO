@@ -11,9 +11,9 @@ import pandas as pd
 import statsmodels.api as sm
 import matplotlib.pyplot as plt
 
-# %%
+
 # Pfad zum Ordner. Muss individuell angepasst werden
-os.chdir("C:\Users\bondr\OneDrive\ilmu (sync onedrive)\Studium\WS2122\EWIFO\Daten-20211215")
+#os.chdir("C:\Users\bondr\OneDrive\ilmu (sync onedrive)\Studium\WS2122\EWIFO\Daten-20211215")
 
 ##############################################################################
 ############### Aufgabe 3.2  #################################################
@@ -21,13 +21,17 @@ os.chdir("C:\Users\bondr\OneDrive\ilmu (sync onedrive)\Studium\WS2122\EWIFO\Date
 
 # %% Daten einlesen
 data = pd.read_excel("houseprice.xlsx","Sheet1")
-
+data.head()
 ##############################################################################
 # a)
 # %%
 # Abhängige Variable
-YVar = data[['price']]
+YVar = data[['price']] #slice menjadi dataframe baru
+# YVar_series = data['price'] #slice menjadi series
+type(YVar)
+print(test)
 
+# %%
 # Erklärende Variable
 XVar = data[['sqrft']]
 # Konstante hinzufügen
