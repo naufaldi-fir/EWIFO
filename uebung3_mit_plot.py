@@ -28,15 +28,18 @@ data.head()
 # Abhängige Variable
 YVar = data[['price']] #slice menjadi dataframe baru
 # YVar_series = data['price'] #slice menjadi series
-type(YVar)
-print(test)
 
-# %%
 # Erklärende Variable
 XVar = data[['sqrft']]
 # Konstante hinzufügen
-XVar = pd.DataFrame(sm.add_constant(XVar.values, has_constant='add'), \
-                    columns = ['constant'] + XVar.columns.tolist())
+print(XVar.columns.tolist())
+XVar = pd.DataFrame(sm.add_constant(XVar.values, has_constant='add'), 
+                   columns = ['constant'] + XVar.columns.tolist())
+
+
+
+
+# %%
 
 # Schätzung
 model_house_price = sm.OLS(YVar, XVar).fit()
