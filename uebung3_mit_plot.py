@@ -35,10 +35,6 @@ XVar = data[['sqrft']]
 print(XVar.columns.tolist())
 XVar = pd.DataFrame(sm.add_constant(XVar.values, has_constant='add'), 
                    columns = ['constant'] + XVar.columns.tolist())
-
-
-
-
 # %%
 
 # Schätzung
@@ -56,6 +52,7 @@ plt.plot(XVar['sqrft'], YVar, 'o')
 plt.plot(XVar['sqrft'], model_house_price.fittedvalues)
 
 ##############################################################################
+# %%
 # b)
 
 # Man kann sich auch nur den Parameter zu einer bestimmten Variablen anschauen
@@ -65,6 +62,7 @@ print('Parameter sqrft:', model_house_price.params['sqrft'])
 print('Parameter sqrft gerundet:', round(model_house_price.params['sqrft'],4))
 
 ##############################################################################
+# %%
 # c)
 
 # Summe der quadrierten Residueen. Hier können wir auch die Ergebnisse der
@@ -79,12 +77,14 @@ print('Summe der quadrierten Residueen:', model_house_price.ssr)
 print('Stichprobenvarianz:', data.var()['price'])
 
 ##############################################################################
+# %%
 # d)
 
 # R2. Auch hier können wir wieder auf die Modellschätzung zurückgreifen.
 print('R2: ', model_house_price.rsquared)
 
 ##############################################################################
+# %%
 # f)
 
 # Erstellung der Variablen price_euro und sqrmtr. Wir fügen die neuen
