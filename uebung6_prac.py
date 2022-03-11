@@ -38,11 +38,13 @@ model1 = sm.OLS(y,x1).fit()
 # verwenden. Wir müssen lediglich das Signifikanzniveau festlegen
 sig_level_a = 0.05
 ki = model1.conf_int(sig_level_a) #Konfidenzintervall für Konstante und cumgpa
+print(ki)
 ki_a = ki.iloc[1]  # Konfidenzintervall nur für cumgpa
-
+print(ki_a)
 print('Konfidenzintervall: [', ki_a[0], ',', ki_a[1], ']')
 
 # %%
+# EINSEITIGEN TEST MIT T-TEST
 # c)
 
 # Wir führen einen einseitigen Test durch.
@@ -60,7 +62,8 @@ k = model1.df_model + model1.k_constant
 
 # Kritischer Wert: Da wir einen einseitigen Test haben, teilen wir das
 # Signifikanzlevel hier nicht durch zwei
-T_crit_c = scipy.stats.t.ppf((1-sig_level_c), n-k)
+T_crit_c = scipy.stats.t.ppf((1-sig_level_c), n-k) #hasilnya plus
+print("test:",scipy.stats.t.ppf((sig_level_c), n-k)) #hasilnya minus
 
 print('Realisierter Wert, Aufgabenteil c)', T_real_c)
 print('Kritischer Wert, Aufgabenteil c)', T_crit_c)
@@ -70,7 +73,8 @@ if T_real_c > T_crit_c:
     print('H0 von Aufgabenteil c) wird abgelehnt')
 else:
     print('H0 von Aufgabenteil c) wird nicht abgelehnt')
-
+# %%
+# EINSEITIGEN TEST WITH P-WERT
 # Alternativ: Test über p-Wert
 # Da wir einen einseitigen Test durchführen, können wir hier nicht den
 # p-Wert von test_a nehmen (Vergleich uebung5.py)
